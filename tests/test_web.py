@@ -6,6 +6,9 @@ The fixtures set up and clean up the ChromeDriver instance.
 
 import pytest
 
+from pages.result import DuckDuckGoResultPage
+from pages.search import DuckDuckGoSearchPage
+
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.keys import Keys
 
@@ -26,29 +29,16 @@ def browser():
 
 
 def test_basic_duckduckgo_search(browser):
-  # Set up some test case data
-  URL = 'https://www.duckduckgo.com'
+  # Set up test case data
   PHRASE = 'panda'
 
-  # Navigate to the DuckDuckGo home page
-  browser.get(URL)
+  # Search for the phrase
+  search_page = DuckDuckGoSearchPage(browser)
+  search_page.load()
+  search_page.search(PHRASE)
 
-  # Find the search input element
-  # In the DOM, it has a 'name' attribute of 'q'
-  search_input = browser.find_element_by_name('q')
-
-  # Send a search phrase to the input and hit the RETURN key
-  search_input.send_keys(PHRASE + Keys.RETURN)
-
-  # Verify that results appear on the results page
-  link_divs = browser.find_elements_by_css_selector('#links > div')
-  assert len(link_divs) > 0
-
-  # Verify that at least one search result contains the search phrase
-  xpath = f"//div[@id='links']//*[contains(text(), '{PHRASE}')]"
-  phrase_results = browser.find_elements_by_xpath(xpath)
-  assert len(phrase_results) > 0
-
-  # Verify that the search phrase is the same
-  search_input = browser.find_element_by_name('q')
-  assert search_input.get_attribute('value') == PHRASE
+  # Verify that results appear
+  result_page = DuckDuckGoResultPage(browser)
+  assert result_page.link_div_count() > 0
+  assert result_page.phrase_result_count(PHRASE) > 0
+  assert result_page.search_input_value() == PHRASE
