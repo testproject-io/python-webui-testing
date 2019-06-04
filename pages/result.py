@@ -9,8 +9,6 @@ from selenium.webdriver.common.by import By
 
 
 class DuckDuckGoResultPage:
-  SEARCH_INPUT = DuckDuckGoSearchPage.SEARCH_INPUT
-
   LINK_DIVS = (By.CSS_SELECTOR, '#links > div')
 
   @classmethod
@@ -30,5 +28,5 @@ class DuckDuckGoResultPage:
     return len(phrase_results)
   
   def search_input_value(self):
-    search_input = self.browser.find_element(*self.SEARCH_INPUT)
+    search_input = self.browser.find_element(*DuckDuckGoSearchPage.SEARCH_INPUT)
     return search_input.get_attribute('value')
