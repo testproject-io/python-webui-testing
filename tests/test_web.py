@@ -10,7 +10,6 @@ from pages.result import DuckDuckGoResultPage
 from pages.search import DuckDuckGoSearchPage
 
 from selenium.webdriver import Chrome
-from selenium.webdriver.common.keys import Keys
 
 
 @pytest.fixture
