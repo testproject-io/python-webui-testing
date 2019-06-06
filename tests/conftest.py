@@ -33,7 +33,7 @@ def config_browser(config):
 
 @pytest.fixture(scope='session')
 def config_wait_time(config):
-  # Validates and returns the wait time from the config data
+  # Validate and return the wait time from the config data
   return config['wait_time'] if 'wait_time' in config else DEFAULT_WAIT_TIME
 
 
