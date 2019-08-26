@@ -3,8 +3,6 @@ This module contains DuckDuckGoResultPage,
 the page object for the DuckDuckGo search result page.
 """
 
-from pages.search import DuckDuckGoSearchPage
-
 from selenium.webdriver.common.by import By
 
 
