@@ -34,8 +34,8 @@ def test_basic_duckduckgo_search(browser):
   browser.get(URL)
 
   # Find the search input element
-  # In the DOM, it has a 'name' attribute of 'q'
-  search_input = browser.find_element_by_name('q')
+  # In the DOM, it has an 'id' attribute of 'search_form_input_homepage'
+  search_input = browser.find_element_by_id('search_form_input_homepage')
 
   # Send a search phrase to the input and hit the RETURN key
   search_input.send_keys(PHRASE + Keys.RETURN)
@@ -50,5 +50,5 @@ def test_basic_duckduckgo_search(browser):
   assert len(phrase_results) > 0
 
   # Verify that the search phrase is the same
-  search_input = browser.find_element_by_name('q')
+  search_input = browser.find_element_by_id('search_form_input')
   assert search_input.get_attribute('value') == PHRASE
