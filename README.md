@@ -4,4 +4,4 @@ This repository contains the example test project for
 a tutorial on the [TestProject](https://blog.testproject.io/) blog
 in collaboration with Andrew Knight from [Automation Panda](https://automationpanda.com/).
 
-Please follow the tutorial if you would like to learn how this test project works!
+Please follow the tutorial if you would like to learn how this test project
